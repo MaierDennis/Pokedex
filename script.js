@@ -71,6 +71,7 @@ async function filterPokemon() {
 }
 
 function renderSearchPokemons(search, button) {
+    button.innerHTML = '';
     for (let i = 0; i < pokemons.length; i++) {
         let name = pokemons[i];
 
@@ -98,30 +99,6 @@ function generatePokemonCard(i) {
         </div>
     </div>`;
 }
-
-/*async function addPokemon() {
-    let NewPokemon = document.getElementById('input').value;
-    let newPokemon = NewPokemon.toLowerCase();
-
-    if (pokemons.includes(newPokemon)) {
-        alert("Pokemon already exists in Pokedex")
-    }
-    else {
-        try {
-
-            let url = `https://pokeapi.co/api/v2/pokemon/${newPokemon}`;
-            let response = await fetch(url);
-            currentPokemon = await response.json();
-
-
-            pokemons.push(newPokemon);
-            renderPokemonButton();
-        }
-        catch (e) {
-            alert("Pokemon not found");
-        }
-    }
-}*/
 
 function renderPokemonButton() {
     let button = document.getElementById('Buttons');
@@ -241,6 +218,7 @@ async function getPokemonTypeBG(i) {
 
 async function getTypeButtons(i) {
     let currentPokemon = await getFromAPI(i);
+    document.getElementById('typePillo' + i).innerHTML = '';
 
     for (let j = 0; j < currentPokemon.types.length; j++) {
         let type = currentPokemon['types'][j]['type']['name'];
